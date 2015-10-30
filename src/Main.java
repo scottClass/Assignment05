@@ -14,10 +14,12 @@ public class Main {
      */
     public static void main(String[] args) {
         OrderedList list = new OrderedList();
-        list.add(1,new Node(4));
-        list.add(0, new Node(3));
         
+        list.add(3);
+        list.add(1);
+        
+
         list.printList();
-        
+
     }
 }
