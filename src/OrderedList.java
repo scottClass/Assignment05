@@ -91,21 +91,26 @@ public class OrderedList {
     }
 
     public void remove(int n) {
-        Node o = new Node(n);
+        Node o = head;
         for(int i = 0; i < index; i++) {
-            
+            head.getNum();
         }
-        
+        numItems --;
     }
 
     public int getInt(int index) {
         Node n = head;
         for (int i = 0; i < index; i++) {
-            n = n.getNext();
+            if(n.hasNext()) {
+                n = n.getNext();
+            }
         }
         return n.getNum();
     }
-    
+    /**
+     * 
+     * @return the size of the list
+     */
     public int size() {
         return numItems;
     }

@@ -8,7 +8,7 @@
  * @author lamonta
  */
 public class Node {
-    private int num;
+    public int num;
     private Node next;
     private Node prev;
     

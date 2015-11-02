@@ -18,8 +18,13 @@ public class Main {
         list.add(3);
         list.add(1);
         
-
+        list.remove(3);
+          
         list.printList();
-
+        System.out.println();
+        
+        if(list.isEmpty() == false) {
+            System.out.println(list.size());
+        }
     }
 }
