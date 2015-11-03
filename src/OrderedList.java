@@ -80,9 +80,6 @@ public class OrderedList {
     public void remove(int n) {
         Node o = head;
         for (int i = 0; i < index; i++) {
-            if (i == 0) {
-                o.setNext(o.first);
-            }
             o.getNum();
             if (o.checkIf() == n) {
                 o.num = 0;

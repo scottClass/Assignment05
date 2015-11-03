@@ -11,7 +11,6 @@ public class Node {
     public int num;
     private Node next;
     private Node prev;
-    public Node first;
     
     public Node(int n){
         this.num = n;
