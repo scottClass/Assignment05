@@ -11,6 +11,7 @@ public class Node {
     public int num;
     private Node next;
     private Node prev;
+    public Node first;
     
     public Node(int n){
         this.num = n;
@@ -63,5 +64,11 @@ public class Node {
     public boolean hasNext(){
         return next != null;
     }
+    
+    public int checkIf() {
+        return num;
+    }
+    
+    
     
 }

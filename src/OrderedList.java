@@ -12,6 +12,7 @@ public class OrderedList {
     private Node head;
     private int numItems;
     private int index;
+    private boolean first = true;
 
     /**
      * Creates an Empty List
@@ -27,58 +28,44 @@ public class OrderedList {
      * @param n the node to add
      */
     public void add(Node n) {
+        numItems++;
         n.setNext(head);
         head = n;
-        numItems++;
+
     }
 
     /**
-     * Adds a node at a specific index
+     * Adds number to the list
      *
-     * @param index the position to place the node
-     * @param n the node to add
+     * @param num number to add
      */
-//    public void add(int index, Node n) {
-//        // adding to an empty list
-//        if (numItems == 0) {
-//            add(n);
-//        } else if (index == 0) {
-//            add(n);
-//        } else {
-//            Node current = head;
-//            for (int i = 0; i < index - 1; i++) {
-//                current = current.getNext();
-//            }
-//            // set the node im adding's next node
-//            n.setNext(current.getNext());
-//            current.setNext(n);
-//
-//            // we've added a number
-//            numItems++;
-//        }
-//
-//    }
-    
     public void add(int num) {
-         //adding to an empty list
-        Node n = new Node(num);
-        index = 0;
-        if (numItems == 0) {
-            add(n);
-        } else if (index == 0) {
-            add(n);
-        } else {
-            Node current = head;
-            for (int i = 0; i < index - 1; i++) {
-                current = current.getNext();
-            }
-            // set the node im adding's next node
-            n.setNext(current.getNext());
-            current.setNext(n);
-
-            // we've added a number
+        if (first) {
+            Node n = new Node(num);
+            n.setNext(head);
+            head = n;
             numItems++;
-            index ++;
+        } else {
+            //adding to an empty list
+            Node n = new Node(num);
+            index = 0;
+            if (numItems == 0) {
+                add(n);
+            } else if (index == 0) {
+                add(n);
+            } else {
+                Node current = head;
+                for (int i = 0; i < index - 1; i++) {
+                    current = current.getNext();
+                }
+                // set the node im adding's next node
+                n.setNext(current.getNext());
+                current.setNext(n);
+
+                // we've added a number
+                numItems++;
+                index++;
+            }
         }
     }
 
@@ -92,35 +79,44 @@ public class OrderedList {
 
     public void remove(int n) {
         Node o = head;
-        for(int i = 0; i < index; i++) {
-            head.getNum();
+        for (int i = 0; i < index; i++) {
+            if (i == 0) {
+                o.setNext(o.first);
+            }
+            o.getNum();
+            if (o.checkIf() == n) {
+                o.num = 0;
+            } else {
+                o.getNext();
+            }
         }
-        numItems --;
+        numItems--;
     }
 
     public int getInt(int index) {
         Node n = head;
         for (int i = 0; i < index; i++) {
-            if(n.hasNext()) {
+            if (n.hasNext()) {
                 n = n.getNext();
             }
         }
         return n.getNum();
     }
+
     /**
-     * 
+     *
      * @return the size of the list
      */
     public int size() {
         return numItems;
     }
-    
+
     public boolean isEmpty() {
-        if(numItems == 0) {
+        if (numItems == 0) {
             return true;
         } else {
             return false;
         }
-        
+
     }
 }

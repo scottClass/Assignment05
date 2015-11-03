@@ -14,11 +14,11 @@ public class Main {
      */
     public static void main(String[] args) {
         OrderedList list = new OrderedList();
+        Node node = new Node(1);
         
+        list.add(6);
         list.add(3);
-        list.add(1);
         
-        list.remove(3);
           
         list.printList();
         System.out.println();
