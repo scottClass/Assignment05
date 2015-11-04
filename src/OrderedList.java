@@ -79,14 +79,13 @@ public class OrderedList {
 
     public void remove(int n) {
         Node o = head;
-        for (int i = 0; i < index; i++) {
-            o.getNum();
-            if (o.checkIf() == n) {
-                o.num = 0;
-            } else {
-                o.getNext();
-            }
+        Node nothing = null;
+        if(o.getNum() == n) {
+            o.setNext(nothing);
+            o.num = 0;
+            o.getNext();
         }
+        
         numItems--;
     }
 

@@ -18,7 +18,8 @@ public class Main {
         list.add(6);
         list.add(3);
         
-          
+        list.remove(6);
+        
         list.printList();
         System.out.println();
         
