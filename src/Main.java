@@ -23,8 +23,5 @@ public class Main {
         list.printList();
         System.out.println();
         
-        if(list.isEmpty() == false) {
-            System.out.println(list.size());
-        }
     }
 }

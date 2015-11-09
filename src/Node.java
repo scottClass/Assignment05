@@ -8,9 +8,9 @@
  * @author lamonta
  */
 public class Node {
-    public int num;
-    public Node next;
-    public Node prev;
+    private int num;
+    private Node next;
+    private Node prev;
     
     public Node(int n){
         this.num = n;
