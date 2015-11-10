@@ -41,9 +41,7 @@ public class OrderedList {
     public void add(int num) {
             //adding to an empty list
             Node n = new Node(num);
-            //index = 0; 
                 add(n);
-           
                 Node current = head;
                 for (int i = 0; i < index - 1; i++) {
                     current = current.getNext();
