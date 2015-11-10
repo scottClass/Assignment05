@@ -12,7 +12,6 @@ public class OrderedList {
     private Node head;
     private int numItems;
     private int index;
-    private boolean first = true;
 
     /**
      * Creates an Empty List
@@ -40,20 +39,11 @@ public class OrderedList {
      * @param num number to add
      */
     public void add(int num) {
-        if (first) {
-            Node n = new Node(num);
-            n.setNext(head);
-            head = n;
-            numItems++;
-        } else {
             //adding to an empty list
             Node n = new Node(num);
-            index = 0;
-            if (numItems == 0) {
+            //index = 0; 
                 add(n);
-            } else if (index == 0) {
-                add(n);
-            } else {
+           
                 Node current = head;
                 for (int i = 0; i < index - 1; i++) {
                     current = current.getNext();
@@ -66,12 +56,12 @@ public class OrderedList {
                 numItems++;
                 index++;
             }
-        }
-    }
+        
+    
 
     public void printList() {
         Node n = head;
-        while (n != null) {
+        for(int i = 0; i <= numItems; i++) {
             System.out.println(n.getNum());
             n = n.getNext();
         }
@@ -80,12 +70,14 @@ public class OrderedList {
     public void remove(int n) {
         Node o = head;
         Node num = new Node(n);
-        o.getNext();
+        o = o.getNext();
         for(int i = 0; i < numItems; i ++) {
             if(o == num) {
-                o.setNext(o.getNext());
+                 o.setNext(o.getNext());
             } else {
-                o.getNext();
+                if(o.hasNext()) {
+                    o = o.getNext();
+                }
             }
         }
         
@@ -93,14 +85,16 @@ public class OrderedList {
         numItems--;
     }
 
-    public int getInt(int index) {
+    public int get(int index) {
         Node n = head;
-        for (int i = 0; i < index; i++) {
-            if (n.hasNext()) {
+        for (int i = 0; i <= index; i++) {
+            if(i == index - 1) {
+                return n.getNum();
+            } else {
                 n = n.getNext();
             }
         }
-        return n.getNum();
+        return 0;
     }
 
     /**
