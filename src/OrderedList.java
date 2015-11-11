@@ -8,8 +8,9 @@
  * @author lamonta
  */
 public class OrderedList {
-
+    private Node filler = new Node(-1);
     private Node head;
+    private Node remove = filler;
     private int numItems;
     private int index;
 
@@ -59,26 +60,20 @@ public class OrderedList {
 
     public void printList() {
         Node n = head;
+        
+        //doesn't print number if it's a number we want to remove
         for(int i = 0; i <= index - 1; i++) {
-            System.out.println(n.getNum());
+            if(remove.getNum() != n.getNum()) {
+                System.out.println(n.getNum());
+            }
+            
             n = n.getNext();
         }
     }
 
-    public void remove(int n) {
-        Node o = head;
-        Node num = new Node(n);
-        o = o.getNext();
-        for(int i = 0; i < numItems; i ++) {
-            if(o == num) {
-                 o.setNext(o.getNext());
-            } else {
-                if(o.hasNext()) {
-                    o = o.getNext();
-                }
-            }
-        }
-        
+    public void remove(int num) {
+        Node n = new Node(num);
+        remove = n;
         
         numItems--;
     }

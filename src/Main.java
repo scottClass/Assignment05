@@ -19,11 +19,9 @@ public class Main {
         list.add(3);
         list.add(9);
         list.add(10);
-        
-        
+       
         list.printList();
-        System.out.println();
-        System.out.println(list.get(4));
+        
         
     }
 }
