@@ -43,7 +43,7 @@ public class OrderedList {
             Node n = new Node(num);
                 add(n);
                 Node current = head;
-                for (int i = 0; i < index - 1; i++) {
+                for (int i = 0; i < index; i++) {
                     current = current.getNext();
                 }
                 // set the node im adding's next node
@@ -59,7 +59,7 @@ public class OrderedList {
 
     public void printList() {
         Node n = head;
-        for(int i = 0; i <= numItems; i++) {
+        for(int i = 0; i <= index - 1; i++) {
             System.out.println(n.getNum());
             n = n.getNext();
         }
