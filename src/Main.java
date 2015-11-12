@@ -24,7 +24,7 @@ public class Main {
         list.printList();
         
         System.out.println();
-        System.out.println(list.get(3));
+        System.out.println(list.get(1));
         
         if(!list.isEmpty()) {
             System.out.println();

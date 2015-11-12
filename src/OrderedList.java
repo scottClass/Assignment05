@@ -9,7 +9,7 @@
  */
 public class OrderedList {
 
-    private Node filler = new Node(-1);
+    private Node filler = new Node(-100);
     private Node head;
     private Node remove = filler;
     private int numItems;
