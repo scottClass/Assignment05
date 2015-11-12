@@ -20,8 +20,15 @@ public class Main {
         list.add(9);
         list.add(10);
         
+        list.remove(9);
         list.printList();
         
+        System.out.println();
+        System.out.println(list.get(3));
         
+        if(!list.isEmpty()) {
+            System.out.println();
+            System.out.println(list.size());
+        }
     }
 }

@@ -8,6 +8,7 @@
  * @author lamonta
  */
 public class OrderedList {
+
     private Node filler = new Node(-1);
     private Node head;
     private Node remove = filler;
@@ -28,10 +29,8 @@ public class OrderedList {
      * @param n the node to add
      */
     public void add(Node n) {
-        numItems++;
         n.setNext(head);
         head = n;
-
     }
 
     /**
@@ -40,48 +39,52 @@ public class OrderedList {
      * @param num number to add
      */
     public void add(int num) {
-            //adding to an empty list
-            Node n = new Node(num);
-                add(n);
-                Node current = head;
-                for (int i = 0; i < index; i++) {
-                    current = current.getNext();
-                }
-                // set the node im adding's next node
-                n.setNext(current.getNext());
-                current.setNext(n);
+        //converts num to node 
+        Node n = new Node(num);
+        //adds node to list
+        add(n);
 
-                // we've added a number
-                numItems++;
-                index++;
-            }
-        
-    
+        //keeps log of how many numbers are added
+        numItems++;
+        index++;
+    }
 
+    /**
+     * Prints all the numbers currently in the list
+     */
     public void printList() {
         Node n = head;
-        
-        //doesn't print number if it's a number we want to remove
-        for(int i = 0; i <= index - 1; i++) {
-            if(remove.getNum() != n.getNum()) {
+
+        for (int i = 0; i <= index - 1; i++) {
+            //doesn't print number if it's a number we want to remove
+            if (remove.getNum() != n.getNum()) {
                 System.out.println(n.getNum());
             }
-            
+            //gets next node
             n = n.getNext();
         }
     }
 
+    /**
+     * marks a number for deletion
+     * @param num number to delete
+     */
     public void remove(int num) {
         Node n = new Node(num);
         remove = n;
-        
+
         numItems--;
     }
 
+    /**
+     * Returns number in the position given
+     * @param index position in list to search
+     * @return the number in index's position
+     */
     public int get(int index) {
         Node n = head;
         for (int i = 0; i <= index; i++) {
-            if(i == index - 1) {
+            if (i == index - 1) {
                 return n.getNum();
             } else {
                 n = n.getNext();
@@ -98,6 +101,10 @@ public class OrderedList {
         return numItems;
     }
 
+    /**
+     * Figures out if list is empty or not
+     * @return if list is empty
+     */
     public boolean isEmpty() {
         if (numItems == 0) {
             return true;
