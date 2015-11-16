@@ -5,7 +5,7 @@
 
 /**
  *
- * @author johns6971
+ * @author Scott
  */
 public class Main {
 

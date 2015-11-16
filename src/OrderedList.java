@@ -5,7 +5,7 @@
 
 /**
  *
- * @author lamonta
+ * @author Scott
  */
 public class OrderedList {
 
@@ -90,13 +90,14 @@ public class OrderedList {
         Node n = new Node(num);
         Node current = head;
         for (int i = 0; i < numItems; i++) {
-            if(current.getNum() == num) {
+            if (current.getNum() == num) {
                 current.getNext().setPrev(current.getPrev());
                 current.getPrev().setNext(current.getNext());
             }
-            current = current.getNext();   
+            current = current.getNext();
         }
-        numItems --;
+
+        numItems--;
     }
 
     /**
