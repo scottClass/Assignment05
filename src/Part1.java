@@ -7,7 +7,7 @@
  *
  * @author Scott
  */
-public class Main {
+public class Part1 {
 
     /**
      * @param args the command line arguments

@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
@@ -7,7 +8,7 @@
  *
  * @author Scott
  */
-public class OrderedList {
+public class ResizeList {
 
     private Node head;
     private int numItems;
@@ -15,7 +16,7 @@ public class OrderedList {
     /**
      * Creates an Empty List
      */
-    public OrderedList() {
+    public ResizeList() {
         head = null;
         numItems = 0;
     }
@@ -41,32 +42,9 @@ public class OrderedList {
     public void add(int num) {
         //converts num to node 
         Node n = new Node(num);
-        //adds node to the start of the list
-        if (isEmpty() || num < head.getNum()) {
-            add(n);
-        } else {
-            Node current = head;
-            boolean added = false;
-            for (int i = 0; i < numItems - 1; i++) {
-                //if the last number is smaller than the current number 
-                //and the next number is bigger add the number between them
-                if (current.getNum() <= num && current.getNext().getNum() >= num) {
-                    n.setPrev(current);
-                    n.setNext(current.getNext());
-                    current.setNext(n);
-                    n.getNext().setPrev(n);
-                    added = true;
-                    break;
-                }
-                //gets next node
-                current = current.getNext();
-            }
-            //if the node has not been added it goes on the end
-            if (!added) {
-                current.setNext(n);
-                n.setPrev(current);
-            }
-        }
+        //adds node to the list
+        add(n);
+
         //keeps log of how many numbers are added
         numItems++;
     }
@@ -88,18 +66,15 @@ public class OrderedList {
     /**
      * marks a number for deletion
      *
-     * @param num number to delete
+     * @param index number to delete
      */
-    public void remove(int num) {
+    public void remove(int index) {
         Node current = head;
         for (int i = 0; i < numItems; i++) {
-            //if the current number is the number that is to be removed
-            if (current.getNum() == num) {
-                //set the surrounding nodes past the node to be removed
-                current.getNext().setPrev(current.getPrev());
+            if(i == index) {
                 current.getPrev().setNext(current.getNext());
+                current.getNext().setPrev(current.getPrev());
             }
-            //gets next node
             current = current.getNext();
         }
 
