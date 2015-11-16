@@ -41,13 +41,15 @@ public class OrderedList {
     public void add(int num) {
         //converts num to node 
         Node n = new Node(num);
-        //adds node to list\
+        //adds node to the start of the list
         if (isEmpty() || num < head.getNum()) {
             add(n);
         } else {
             Node current = head;
             boolean added = false;
             for (int i = 0; i < numItems - 1; i++) {
+                //if the last number is smaller than the current number 
+                //and the next number is bigger add the number between them
                 if (current.getNum() <= num && current.getNext().getNum() >= num) {
                     n.setPrev(current);
                     n.setNext(current.getNext());
@@ -56,8 +58,10 @@ public class OrderedList {
                     added = true;
                     break;
                 }
+                //gets next node
                 current = current.getNext();
             }
+            //if the node has not been added it goes on the end
             if (!added) {
                 current.setNext(n);
                 n.setPrev(current);
@@ -90,10 +94,13 @@ public class OrderedList {
         Node n = new Node(num);
         Node current = head;
         for (int i = 0; i < numItems; i++) {
+            //if the current number is the number that is to be removed
             if (current.getNum() == num) {
+                //set the surrounding nodes past the node to be removed
                 current.getNext().setPrev(current.getPrev());
                 current.getPrev().setNext(current.getNext());
             }
+            //gets next node
             current = current.getNext();
         }
 
