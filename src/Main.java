@@ -20,11 +20,11 @@ public class Main {
         list.add(9);
         list.add(10);
         
-        list.remove(9);
+        //list.remove(6);
         list.printList();
         
         System.out.println();
-        System.out.println(list.get(1));
+        System.out.println(list.get(2));
         
         if(!list.isEmpty()) {
             System.out.println();
