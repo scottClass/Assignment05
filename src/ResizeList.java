@@ -39,8 +39,8 @@ public class ResizeList {
      * @param n the node to add
      */
     public void add(int index, Node n) {
-        // adding to an empty list
         index = numItems;
+        // adding to an empty list        
         if (numItems == 0) {
             add(n);
         } else if (index == 0) {
