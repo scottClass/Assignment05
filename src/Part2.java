@@ -16,7 +16,9 @@ public class Part2 {
     public static void main(String[] args) {
         ResizeList list = new ResizeList();
         
+        list.add(3, new Node(1));
         
+        list.printList();
         
         
     }

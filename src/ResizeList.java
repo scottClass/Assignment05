@@ -28,65 +28,74 @@ public class ResizeList {
      */
     public void add(Node n) {
         n.setNext(head);
-        if (head != null) {
-            head.setPrev(n);
-        }
         head = n;
-    }
-
-    /**
-     * Adds number to the list
-     *
-     * @param num number to add
-     */
-    public void add(int num) {
-        //converts num to node 
-        Node n = new Node(num);
-        //adds node to the list
-        add(n);
-
-        //keeps log of how many numbers are added
         numItems++;
     }
 
     /**
-     * Prints all the numbers currently in the list
+     * Adds a node at a specific index
+     *
+     * @param index the position to place the node
+     * @param n the node to add
      */
+    public void add(int index, Node n) {
+        // adding to an empty list
+        if (numItems == 0) {
+            add(n);
+        } else if (index == 0) {
+            add(n);
+        } else {
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.getNext();
+            }
+            // set the node im adding's next node
+            n.setNext(current.getNext());
+            current.setNext(n);
+
+            // we've added a number
+            numItems++;
+        }
+
+    }
+
     public void printList() {
         Node n = head;
-
-        for (int i = 0; i < numItems; i++) {
+        while (n != null) {
             System.out.println(n.getNum());
-
-            //gets next node
             n = n.getNext();
         }
     }
 
-    /**
-     * marks a number for deletion
-     *
-     * @param index number to delete
-     */
     public void remove(int index) {
-        Node current = head;
-        for (int i = 0; i < numItems; i++) {
-            if(i == index) {
-                current.getPrev().setNext(current.getNext());
-                current.getNext().setPrev(current.getPrev());
-            }
-            current = current.getNext();
+        // make sure it is in our list
+        if (index >= numItems || index < 0) {
+            return;
         }
-
+        // delete first item
+        if (index == 0) {
+            head = head.getNext();
+            // deleting end item
+        } else if (index == numItems - 1) {
+            // go to the second last node
+            Node n = head;
+            for (int i = 0; i < index - 1; i++) {
+                n = n.getNext();
+            }
+            // make it point nowhere
+            n.setNext(null);
+            // remove from the middle
+        } else {
+            Node n = head;
+            for (int i = 0; i < index - 1; i++) {
+                n = n.getNext();
+            }
+            // ask the node for its next next node
+            n.setNext(n.getNext().getNext());
+        }
         numItems--;
     }
 
-    /**
-     * Returns number in the position given
-     *
-     * @param index position in list to search
-     * @return the number in index's position
-     */
     public int get(int index) {
         Node n = head;
         for (int i = 0; i <= index; i++) {
@@ -99,25 +108,7 @@ public class ResizeList {
         return 0;
     }
 
-    /**
-     *
-     * @return the size of the list
-     */
     public int size() {
         return numItems;
-    }
-
-    /**
-     * Figures out if list is empty or not
-     *
-     * @return if list is empty
-     */
-    public boolean isEmpty() {
-        if (numItems == 0) {
-            return true;
-        } else {
-            return false;
-        }
-
     }
 }
