@@ -107,7 +107,7 @@ public class ResizeList {
         }
         return 0;
     }
-
+    
     public int size() {
         return numItems;
     }
