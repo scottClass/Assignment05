@@ -40,6 +40,7 @@ public class ResizeList {
      */
     public void add(int index, Node n) {
         index = numItems;
+        //System.out.println(index);
         // adding to an empty list        
         if (numItems == 0) {
             add(n);

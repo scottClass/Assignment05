@@ -1,9 +1,11 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Scott
@@ -15,13 +17,26 @@ public class Part2 {
      */
     public static void main(String[] args) {
         ResizeList list = new ResizeList();
+        Scanner input = new Scanner(System.in);
+        int length = 10;
+        int[] array = new int[length];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = input.nextInt();
+            if (array[i] == 0) {
+                i = array.length;
+            } else {
+                list.add(0, new Node(array[i]));
+                if (i + 1== array.length) {
+                    length += 10;
+                }
+            }
+        }
         
-        list.add(0, new Node(1));
-        list.add(0, new Node(4));
-        list.add(0, new Node(2));
+        System.out.println();
+        System.out.println();
         list.printList();
-        
-        
+
     }
-    
+
 }
