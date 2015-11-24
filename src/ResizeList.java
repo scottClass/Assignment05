@@ -12,6 +12,9 @@ public class ResizeList {
 
     private Node head;
     private int numItems;
+    private int[] array;
+    private int count;
+    private int length;
 
     /**
      * Creates an Empty List
@@ -19,6 +22,9 @@ public class ResizeList {
     public ResizeList() {
         head = null;
         numItems = 0;
+        length = 10;
+        array = new int[length];
+        count = 0;
     }
 
     /**
@@ -30,6 +36,7 @@ public class ResizeList {
         n.setNext(head);
         head = n;
         numItems++;
+        count++;
     }
 
     /**
@@ -39,7 +46,19 @@ public class ResizeList {
      * @param n the node to add
      */
     public void add(int index, Node n) {
+        if(count == 10) {
+            int[] temp = new int[length];
+            for(int i = 0; i < temp.length; i++) {
+                temp[i] = array[i];
+            }
+            array = new int[length + 10];
+            for(int i = 0; i < temp.length; i ++) {
+                array[i] = temp[i];
+            }
+        }
+        array[count] = n.getNum();
         index = numItems;
+        
         //System.out.println(index);
         // adding to an empty list        
         if (numItems == 0) {
@@ -57,19 +76,22 @@ public class ResizeList {
 
             // we've added a number
             numItems++;
+            count++;
         }
 
     }
 
     public void printList() {
-        Node n = head;
-        while (n != null) {
-            System.out.println(n.getNum());
-            n = n.getNext();
+        for(int i = 0; i < array.length; i++) {
+            if(array[i] != 0) {
+                System.out.println(array[i]);
+            }
         }
     }
 
     public void remove(int index) {
+        //since it counts from zero this makes it so that the first item in the list is the 1st index 
+        index -= 1;
         // make sure it is in our list
         if (index >= numItems || index < 0) {
             return;

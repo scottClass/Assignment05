@@ -22,20 +22,22 @@ public class Part2 {
         int[] array = new int[length];
 
         for (int i = 0; i < array.length; i++) {
+            
             array[i] = input.nextInt();
+            
             if (array[i] == 0) {
+                System.out.println();
+                System.out.println("list:");
+                list.printList();
                 i = array.length;
             } else {
                 list.add(0, new Node(array[i]));
-                if (i + 1== array.length) {
+                if (i + 1 == array.length) {
                     length += 10;
+                    array = new int[length];
                 }
             }
         }
-        
-        System.out.println();
-        System.out.println();
-        list.printList();
 
     }
 
